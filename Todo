@@ -1,0 +1,8 @@
+We can use the hardware_timer library to get elapsed. 
+uint64_t time_us_64	(	void		)	
+Return the current 64 bit timestamp value in microseconds.
+Timer increments by one every microsecond.
+One second = 1,000,000 microsecnds
+One second = 1,000 milliseconds
+
+
