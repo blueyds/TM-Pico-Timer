@@ -16,7 +16,7 @@ endif()
 # Initialize the SDK
 pico_sdk_init()
 
-#add_subdirectory(hello_world)
+add_subdirectory(pin)
 
 add_compile_options(-Wall
         -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
@@ -28,14 +28,14 @@ endif()
 
 add_executable(tmpicotimer
 		main.cpp
-        lcd_1602_i2c.c
+        pin
         )
 
 # pull in common dependencies and additional i2c hardware support
 target_link_libraries(tmpicotimer 
-		pico_stdlib 
-		hardware_i2c
-		hardware_timer)
+		pin
+        pico_stdlib        
+)
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(tmpicotimer)
