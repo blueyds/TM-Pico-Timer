@@ -1,5 +1,7 @@
 #include <stdint.h>
-
+#include "pico/stdlib.h"
+#include "hardware/i2c.h"
+#include "pico/binary_info.h"
 #include "lcd1602.hpp"
 
 /* Quick helper function for single byte transfers */
@@ -14,9 +16,9 @@ void lcd1602::toggle_enable(uint8_t val) {
     // We cannot do this too quickly or things don't work
 #define DELAY_US 600
     sleep_us(DELAY_US);
-    i2c_write_byte(val | lcd1602::ENABLE_BIT);
+    write_byte(val | lcd1602::ENABLE_BIT);
     sleep_us(DELAY_US);
-    i2c_write_byte(val & ~lcd1602::ENABLE_BIT);
+    write_byte(val & ~lcd1602::ENABLE_BIT);
     sleep_us(DELAY_US);
 }
 
@@ -63,7 +65,7 @@ lcd1602::lcd1602() {
 
 	
 	this->send_byte(0x03, lcd1602::COMMAND);
-	sleep_ms(5); # need to wait 5 ms after first reset
+	sleep_ms(5); // need to wait 5 ms after first reset
 	this->send_byte(0x03, lcd1602::COMMAND);
 	sleep_ms(1);
 	this->send_byte(0x03, lcd1602::COMMAND);
@@ -71,7 +73,7 @@ lcd1602::lcd1602() {
 	this->send_byte(0x02, lcd1602::COMMAND);
 
 	this->send_byte(lcd1602::ENTRYMODESET | lcd1602::ENTRYLEFT, lcd1602::COMMAND);
-	this->send_byte(lcd1602::FUNCTIONSET | lcd1602::2LINE, lcd1602::COMMAND);
+	this->send_byte(lcd1602::FUNCTIONSET | lcd1602::LINES2, lcd1602::COMMAND);
 	this->send_byte(lcd1602::DISPLAYCONTROL | lcd1602::DISPLAYON, lcd1602::COMMAND);
 	this->clear();
 }

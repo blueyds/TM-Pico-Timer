@@ -55,9 +55,9 @@ class lcd1602{
 		static const uint8_t DISPLAYMOVE = 0x08;
 		
 		// flags for function set
-		static const uint8_t 5x10DOTS = 0x04;
-		static const uint8_t 2LINE = 0x08;
-		static const uint8_t 8BITMODE = 0x10;
+		static const uint8_t DOTS5x10 = 0x04;
+		static const uint8_t LINES2 = 0x08;
+		static const uint8_t BITMODE8 = 0x10;
 		
 		// flag for backlight control
 		static const uint8_t BACKLIGHT = 0x08;

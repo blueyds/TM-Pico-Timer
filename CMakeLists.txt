@@ -17,7 +17,7 @@ endif()
 pico_sdk_init()
 
 add_subdirectory(pin)
-add_subdirector(lcd1602)
+add_subdirectory(lcd1602)
 
 add_compile_options(-Wall
 	-Wno-format 
