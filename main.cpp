@@ -4,7 +4,8 @@
 
 int main() {
     pin led_pin = pin(27);
-	lcd lcd1602 = lcd1602();
+	lcd1602 display = lcd1602();
+	display.send_string("POWERED ON");
     while (true) {
         led_pin.turnOn();
         sleep_ms(250);

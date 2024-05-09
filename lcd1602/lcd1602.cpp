@@ -1,4 +1,5 @@
 #include <stdint.h>
+#include <string>
 #include "pico/stdlib.h"
 #include "hardware/i2c.h"
 #include "pico/binary_info.h"
@@ -47,10 +48,12 @@ void lcd1602::send_char(char val) {
     this->send_byte(val, lcd1602::CHARACTER);
 }
 
-void lcd1602::send_string(const char *s) {
-    while (*s) {
-        this->send_char(*s++);
-    }
+void lcd1602::send_string(string str) {
+	
+	for (unsigned i=0; i<str.length(); ++i)
+	{
+		send_char(str.at(i));
+	}
 }
 
 lcd1602::lcd1602() {

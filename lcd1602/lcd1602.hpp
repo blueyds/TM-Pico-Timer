@@ -23,7 +23,7 @@ class lcd1602{
 		void clear(void);
 		void set_cursor(int line, int position);
 		void send_char(char val);
-		void send_string(const char *s);
+		void send_string(string s);
 		void send_command(int cmd);
 		lcd1602();
 		
